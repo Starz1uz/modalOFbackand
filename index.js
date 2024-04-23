@@ -1,30 +1,33 @@
 fetch('https://jsonplaceholder.typicode.com/comments')
     .then(res => res.json())
     .then(data => {
-        const comments = data.slice(0, 10);
+        const comments = data.slice(0, 10)
 
-        let commitElements = document.querySelectorAll('.commit');
+        let commit = document.querySelectorAll('.commit')
 
-        commitElements.forEach((el, index) => {
-            if (comments[index]) {
-                el.textContent = comments[index].body;
+        commit.forEach((el, num) => {
+            
+            if (comments[num]) {
+    
+                el.textContent = comments[num].body;
             }
-        });
+            
+        })
     })
 
 let btn = document.querySelector('.open-modal')
 let modal = document.querySelector('.modal-container')
-let isOpen = false;
+let Open = false
 
 btn.onclick = () => {
-    if (!isOpen) {
+    if (!Open) {
         // console.log('lokoihjd');
-        modal.style.display = 'flex';
-        btn.innerHTML = 'close';
-        isOpen = true;
+        modal.style.display = 'flex'
+        btn.innerHTML = 'close'
+        Open = true
     } else {
-        modal.style.display = 'none';
-        btn.innerHTML = 'open';
-        isOpen = false;
+        modal.style.display = 'none'
+        btn.innerHTML = 'open'
+        Open = false
     }
-};
+}
